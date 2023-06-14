@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        ### 题目描述
+
+        给定一个字符串，请你找出其中不含有重复字符的 **最长子串** 的长度。 
+    </p>
+    <script>
+        console.log(
+            (function(s){
+                let rk =  0;
+                const n = s.length;
+                const s1 = new Set();
+                let max = 0;
+                for(let i=0;i<n ;i++){
+                    if(i !== 0){
+                        s1.delete(s[i-1])
+                    }
+                    while(rk< n && !s1.has(s[rk]) ){
+                        s1.add(s[rk])
+                        rk++;
+                    }
+                    max = Math.max(max, rk - i)
+                }
+                return max;
+            })('abcddddefghj')
+        )
+    </script>
+</body>
+</html>
