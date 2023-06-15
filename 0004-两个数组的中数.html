@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [1,3]
+        const arr2 = [2]
+        // 先排序合并为一个数组，再取
+        console.log((function(arr,arr2){
+            const allArr = [...arr,...arr2];
+            allArr.sort((a,b)=> a-b)
+            const n = allArr.length;
+            const er = Math.floor(n/2)
+            if(n % 2 == 0){
+                return (allArr[er -1] + allArr[er])/2
+            }
+            return allArr[er] 
+        })(arr,arr2))
+    </script>
+</body>
+</html>
