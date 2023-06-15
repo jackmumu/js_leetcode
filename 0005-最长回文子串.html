@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const s = 'aaabbabba';
+        console.log(
+            (function(){
+                const len = s.length;
+                if(len < 2){
+                    return s;
+                }
+                let max = 1;
+                let start = 0;
+                const arr2 = new Array(len).fill(0).map(()=> new Array(len).fill(false));
+                for(let i =0 ;i<len;i++){
+                    arr2[i][i] = true;
+                }
+                for(let L = 2; L<=len;L++){
+                    for(let left = 0;left< len;left++){
+                        const right = left + L - 1;
+                        if(s[left] != s[right]){
+                            arr2[left][right] = false
+                        }else{
+                            if(right -left < 3){
+                                arr2[left][right] = true
+                            }else{
+                                arr2[left][right] = arr2[left+1][right-1]
+                            }
+                        }
+                        if(arr2[left][right] && max < L ){
+                            max = L;
+                            start= left
+                        }
+                    }
+                }
+                return s.substring(start, start +max)
+            })()
+        )
+    </script>
+</body>
+</html>
