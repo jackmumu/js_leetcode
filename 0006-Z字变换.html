@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //## 题目描述
+        //给定一个字符串，和一个整数n，将它排列成一个n行的蛇形返回。
+        const s = 'AB';
+        const numRows = 1
+        console.log((function(s,numRows){
+            if(numRows < 2){
+                return s;
+            }
+            const len = s.length;
+            const cycle = 2 * numRows - 2;
+            const arr = new Array(numRows).fill("")
+            let i =0, flag = -1;
+            for(let c =0;c< len;c++){
+                arr[i] += s[c];
+                if(i ==0 || i == numRows -1){
+                    flag = -flag;
+                }
+                i += flag;
+            }
+            return arr.join("")
+        })(s,numRows))
+    </script>
+</body>
+</html>
