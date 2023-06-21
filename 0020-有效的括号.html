@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-    // ### 题目描述
-    // 给定一个只包括 `'('`，`')'`，`'{'`，`'}'`，`'['`，`']'` 的字符串，判断字符串是否有效。
-    // 有效字符串需满足：
+        // ### 题目描述
+        // 给定一个只包括 `'('`，`')'`，`'{'`，`'}'`，`'['`，`']'` 的字符串，判断字符串是否有效。
+        // 有效字符串需满足：
         // 1. 左括号必须用相同类型的右括号闭合。
         // 2. 左括号必须以正确的顺序闭合。
         // 注意空字符串可被认为是有效字符串。
-    const s = "()[]{}"
-    console.log(
-        (function(s){
-            const m = new Map([
-                [')', '('],
-                ['}', '{'],
-                [']', '[']
-            ])
-            const arr = []
-            for(let i of s){
-                if(m.has(i)){
-                    if(!arr.length || arr[arr.length - 1] !== m.get(i)){
-                        return false
+        const s = "()[]{}"
+        console.log(
+            (function (s) {
+                const m = new Map([
+                    [')', '('],
+                    ['}', '{'],
+                    [']', '[']
+                ])
+                const arr = []
+                for (let i of s) {
+                    if (m.has(i)) {
+                        if (!arr.length || arr[arr.length - 1] !== m.get(i)) {
+                            return false
+                        }
+                        arr.pop();
+                    } else {
+                        arr.push(i)
                     }
-                    arr.pop();
-                }else{
-                    arr.push(i)
                 }
-            }
-            return !arr.length;
-        })(s)
-    )
+                return !arr.length;
+            })(s)
+        )
     </script>
 </body>
+
 </html>
